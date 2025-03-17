@@ -4,27 +4,25 @@ import { Box, Button, InputBase,TextField } from "@mui/material";
 const App = () =>{
 
   const [newTask,setNewTask] = useState("");
-
-
-const tasks = [
-  {
-    id: 12,
+  const [tasks,setTask] = useState([{
     task: "this is task1",
-    isComplete: false,
   },
   {
-    id: 13,
     task: "this is task2",
-    isComplete: false,
   },
   {
-    id: 14,
     task: "this is task3",
-    isComplete: false,
-  }
-];
+  }])
 
-const handleOnchange = (event: React.ChangeEvent<HTMLInputElement>) =>{ console.log(event.target.value)}
+
+const handleOnchange = (event: React.ChangeEvent<HTMLInputElement>) =>{ setNewTask(event.target.value)}
+console.log(newTask)
+const handelOnAdd = () => {
+
+  setTask([...tasks,{task:newTask}])
+}
+
+console.log(tasks);
 
 return (
   <>
@@ -47,7 +45,7 @@ return (
           color="secondary" 
           disabled={false} 
           fullWidth={true}
-          onClick={()=>{console.log("click vayo")}}
+          onClick={handelOnAdd}
         >
           Add your date
         </Button>
